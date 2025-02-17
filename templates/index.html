@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearPaper - AI Research Paper Reader</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+</head>
+<body>
+    <div class="main-container">
+        <div class="pdf-container">
+            <div id="dropZone" class="upload-area">
+                <input type="file" id="fileInput" accept="application/pdf" style="display: none;">
+                <button id="uploadButton" class="upload-button">Choose PDF</button>
+                <p>or drag and drop a PDF file here</p>
+            </div>
+            <div id="pdfViewer" class="pdf-viewer">
+                <div class="pdf-controls">
+                    <button id="zoomOut" class="control-button" title="Zoom Out">
+                        <svg width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M19 13H5v-2h14v2z"/>
+                        </svg>
+                    </button>
+                    <span id="zoomLevel">100%</span>
+                    <button id="zoomIn" class="control-button" title="Zoom In">
+                        <svg width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                        </svg>
+                    </button>
+                    <div class="page-controls">
+                        <button id="prevPage" class="control-button" title="Previous Page">
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                            </svg>
+                        </button>
+                        <span id="pageInfo">Page <span id="currentPage">1</span> of <span id="pageCount">1</span></span>
+                        <button id="nextPage" class="control-button" title="Next Page">
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div id="pdfViewerContainer"></div>
+            </div>
+        </div>
+        <div class="chat-container">
+            <div id="chatPanel" class="panel">
+                <div class="panel-header">
+                    <h2>AI Assistant</h2>
+                </div>
+                <div id="chatMessages" class="chat-messages"></div>
+                <div class="chat-input-container">
+                    <button id="testComprehension" class="test-comprehension-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Test My Comprehension
+                    </button>
+                    <div class="input-wrapper">
+                        <textarea id="questionInput" placeholder="Ask about the paper..." rows="2"></textarea>
+                        <button id="sendButton" class="send-button">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
